@@ -6,9 +6,10 @@ To get started, fork the repo and clone it to your local machine, then run the f
 
 ```
 bundle install --without production
-rails db:migrate
-rails db:seed
-rails test
+rake db:create
+rake db:migrate
+rake db:seed
+rake test
 ```
 
 The base app doesn't use Action Cable, but rather is designed as the starting point for the tutorial. To see the state of the app at the *end* of the tutorial, switch to the `action-cable-reference` branch:
