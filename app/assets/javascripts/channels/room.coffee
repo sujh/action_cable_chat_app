@@ -7,23 +7,24 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
     if data['type'] == 'chat'
-      App.room.show_conversation(data['username'], data['message'])
+      App.room.show_chat(data['username'], data['message'])
     else if data['type'] == 'inform'
       App.room.show_inform(data['message'])
 
     # Called when there's incoming data on the websocket for this channel
 
   speak: ->
-    words = $('textarea#message_content').val().replace(/\n/g, '<br/>')
-    if words.length > 0
+    words = $('textarea#message_content').val()
+    if words.replace(/\n/g, '').length > 0
       @perform 'speak', message: words
       $('textarea#message_content').val('')
 
-  show_conversation: (user, msg) ->
+  show_chat: (user, msg) ->
+    escapedMsg = msg.replace(/<(.+?)>/g, "&lt;$1&gt;").replace(/\n/g, '<br>').replace(/\s/g, '&nbsp;')
     fragment = """
       <div class='message'>
         <div class='message-user'>#{user}</div>
-        <div class='message-content'>#{msg}</div>
+        <div class='message-content'>#{escapedMsg}</div>
       </div>"""
     $('#messages-table').append(fragment)
 
