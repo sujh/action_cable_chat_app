@@ -6,10 +6,10 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    if data['type'] == 'chat'
-      App.room.show_chat(data['username'], data['message'])
-    else if data['type'] == 'inform'
-      App.room.show_inform(data['message'])
+    if data['type'] is 'chat'
+      @show_chat(data['username'], data['message'])
+    else if data['type'] is 'inform'
+      @show_inform(data['message'])
 
     # Called when there's incoming data on the websocket for this channel
 
@@ -35,14 +35,14 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   leave: ->
     @perform 'unsubscribed'
 
-  $(document).on 'keypress', 'textarea#message_content', (event) ->
-    if event.ctrlKey && event.keyCode is 13
-      App.room.speak()
-      event.preventDefault()
-
-  $(document).on "submit", 'form#new_message', (event) ->
+$(document).on 'keypress', 'textarea#message_content', (event) ->
+  if event.ctrlKey && event.keyCode is 13
     App.room.speak()
     event.preventDefault()
 
-  $(document).on 'click', '.leave', (event) ->
-    App.room.leave
+$(document).on "submit", 'form#new_message', (event) ->
+  App.room.speak()
+  event.preventDefault()
+
+$(document).on 'click', '.leave', (event) ->
+  App.room.leave()
