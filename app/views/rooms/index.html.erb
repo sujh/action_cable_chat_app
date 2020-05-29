@@ -1,0 +1,9 @@
+<div class="message-wr">
+  <% @rooms.each do |room| %>
+    <div>
+      <%= link_to room_messages_path(room) do %>
+        <% "#{room.name}(#{room.desc})" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

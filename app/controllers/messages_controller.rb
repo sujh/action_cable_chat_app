@@ -5,23 +5,15 @@ class MessagesController < ApplicationController
   def index
   end
 
-  def create
-    # message = current_user.messages.build(message_params)
-    # if message.save
-    #   redirect_to messages_url
-    # else
-    #   render 'index'
-    # end
-  end
-
   private
 
     def get_messages
-      @messages = Message.for_display
-      @message  = current_user.messages.build
+      @room = Room.find(params[:room_id])
+      @messages = @room.messages.for_display
+      @message = current_user.messages.build(room_id: @room.id)
     end
 
     def message_params
-      params.require(:message).permit(:content)
+      params.require(:message).permit(:content, :room_id)
     end
 end
