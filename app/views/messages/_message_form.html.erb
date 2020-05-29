@@ -1,5 +1,5 @@
 <div class="message-input">
-  <%= form_for(@message) do |f| %>
+  <%= form_for([@room, @message]) do |f| %>
     <%= f.text_area :content %>
     <%= f.submit "Send", data: { disable_with: false } %>
   <% end %>

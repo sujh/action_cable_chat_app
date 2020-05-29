@@ -12,7 +12,6 @@ gem 'turbolinks',              '5.0.0'
 gem 'jbuilder',                '2.4.1'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
   gem 'byebug',  '9.0.0', platform: :mri
 end
 
@@ -30,10 +29,8 @@ group :test do
   gem 'guard-minitest',           '2.4.4'
 end
 
-group :production do
-  gem 'pg', '0.19.0'
-  gem 'redis', '~> 3.0'
-end
+gem 'pg', '~> 1.0'
+gem 'redis', '~> 3.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
