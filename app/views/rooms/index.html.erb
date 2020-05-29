@@ -1,9 +1,20 @@
 <div class="message-wr">
-  <% @rooms.each do |room| %>
-    <div>
-      <%= link_to room_messages_path(room) do %>
-        <% "#{room.name}(#{room.desc})" %>
+  <table class="table table-hover table-borderless">
+    <thead>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Type</th>
+    </thead>
+    <tbody>
+      <% @rooms.each_with_index do |room, idx| %>
+        <tr>
+          <th scope="row"><%= idx + 1 %></th>
+          <td><%= link_to room.name, room_messages_path(room) %></td>
+          <td><%= room.desc %></td>
+          <td>yyiyiy</td>
+        </tr>
       <% end %>
-    </div>
-  <% end %>
+    </tbody>
+  </table>
 </div>
