@@ -1,4 +1,7 @@
-<div class="message-wr">
+<div class="message-wr" style="position: relative">
+  <div style="position: absolute; top: -20px">
+    <%= link_to 'Back to room list', rooms_path %>
+  </div>
   <%= render 'messages' %>
   <%= render 'message_form' %>
 </div>

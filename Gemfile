@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails',                   '5.0.7.2'
 gem 'bcrypt',                  '3.1.13'
-gem 'faker',                   '1.6.6'
 gem 'puma',                    '4.3.1'
 gem 'sass-rails',              '5.0.6'
 gem 'uglifier',                '3.0.0'

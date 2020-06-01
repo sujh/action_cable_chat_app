@@ -12,7 +12,7 @@
           <th scope="row"><%= idx + 1 %></th>
           <td><%= link_to room.name, room_messages_path(room) %></td>
           <td><%= room.desc %></td>
-          <td>yyiyiy</td>
+          <td><%= room.traced? ? 'Traced' : 'No traced' %></td>
         </tr>
       <% end %>
     </tbody>
