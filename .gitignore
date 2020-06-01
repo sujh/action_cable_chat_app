@@ -26,3 +26,5 @@
 .DS_Store
 .idea
 .ruby-gemset
+config/database.yml
+public/assets/
