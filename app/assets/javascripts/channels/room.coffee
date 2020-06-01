@@ -12,6 +12,7 @@ $(document).on 'turbolinks:load', ->
           @show_chat(data['username'], data['message'])
         else if data['type'] is 'inform'
           @show_inform(data['message'])
+        $('#messages')[0].scrollTop = $('#messages')[0].scrollHeight
 
         # Called when there's incoming data on the websocket for this channel
 
